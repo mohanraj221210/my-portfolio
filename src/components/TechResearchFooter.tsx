@@ -14,14 +14,13 @@ import {
   Activity,
   Globe,
   Compass,
-  Box,
-  Layers,
-  Atom,
-  Binary,
   Code2,
   Sparkles,
   Database,
   Network,
+  Rocket,
+  Flame,
+  Orbit,
 } from 'lucide-react';
 import { soundEngine } from '../utils/soundEffects';
 import resumePdf from '../assets/pdfs/Mohan_Raj_Resume.pdf';
@@ -92,24 +91,23 @@ const RESEARCH_NODES: ResearchNode[] = [
 
 const TERMINAL_LOGS_POOL = [
   '[SYS_INIT] R&D Tech Radar core online.',
+  '[SPACECRAFT] Rocket Starship telemetry locked... Trajectory to Earth 100%',
   '[NET_SCAN] Scanning node PermiGo QR Gate engine... Ping 12ms [STABLE]',
   '[COMPILER] Vite v5.4 bundle optimized. Gzip size: 18.8kB',
   '[AI_LAB] Context window optimization complete (4096 tokens).',
   '[IEEE_NODE] IEEE JIT Student Branch Chairman network operational.',
   '[DB_STREAM] MongoDB Shard replica sync verified.',
   '[SECURITY] SSL/TLS 256-bit encryption verified for all endpoints.',
-  '[PERF_MONITOR] Framer Motion 60 FPS physics renderer active.',
   '[R&D_STATUS] 4 Research Projects Active // 0 System Warnings',
 ];
 
-// Animated Floating Technical Research Objects in Empty Space Background
 const FLOATING_TECH_OBJECTS = [
-  { id: 1, label: '<MERN_STACK />', icon: Code2, x: '8%', y: '12%', duration: 18, size: 'sm', color: '#00E5FF' },
-  { id: 2, label: 'AI_MODEL::QUANTUM', icon: Atom, x: '88%', y: '18%', duration: 22, size: 'md', color: '#A855F7' },
-  { id: 3, label: 'QR_SECURITY_NODE', icon: ShieldCheck, x: '5%', y: '58%', duration: 25, size: 'md', color: '#10B981' },
-  { id: 4, label: 'SERVERLESS_EDGE', icon: Network, x: '91%', y: '62%', duration: 20, size: 'sm', color: '#F59E0B' },
-  { id: 5, label: 'IEEE_LEADERSHIP', icon: Zap, x: '15%', y: '85%', duration: 24, size: 'sm', color: '#00E5FF' },
-  { id: 6, label: 'DB_SHARD::LIVE', icon: Database, x: '82%', y: '88%', duration: 19, size: 'sm', color: '#38BDF8' },
+  { id: 1, label: '<MERN_STACK />', icon: Code2, x: '6%', y: '12%', duration: 18, color: '#00E5FF' },
+  { id: 2, label: 'SPACESHIP_ORBIT', icon: Rocket, x: '85%', y: '16%', duration: 22, color: '#A855F7' },
+  { id: 3, label: 'QR_SECURITY_GATE', icon: ShieldCheck, x: '5%', y: '55%', duration: 25, color: '#10B981' },
+  { id: 4, label: 'EARTH_STATION', icon: Globe, x: '90%', y: '60%', duration: 20, color: '#F59E0B' },
+  { id: 5, label: 'IEEE_LEADERSHIP', icon: Zap, x: '12%', y: '82%', duration: 24, color: '#00E5FF' },
+  { id: 6, label: 'DATABASE_SHARD', icon: Database, x: '84%', y: '85%', duration: 19, color: '#38BDF8' },
 ];
 
 export const TechResearchFooter: React.FC = () => {
@@ -144,10 +142,37 @@ export const TechResearchFooter: React.FC = () => {
       <div className="rd-footer-beam-line" style={{ background: `linear-gradient(90deg, transparent 0%, ${themeColor} 50%, transparent 100%)` }} />
 
       {/* ========================================================= */}
-      {/* BACKGROUND FLOATING TECHNICAL ANIMATION OBJECTS IN SPACE  */}
+      {/* SPACESHIP / ROCKET FLYING TOWARD EARTH ANIMATION STAGE    */}
       {/* ========================================================= */}
-      <div className="empty-space-objects-stage">
-        {/* Animated Wireframe 3D Floating Geometry Cubes */}
+      <div className="space-animation-container">
+        {/* Glowing Planet Earth Sphere */}
+        <div className="planet-earth-sphere" style={{ '--glow-color': themeColor } as React.CSSProperties}>
+          <div className="earth-atmosphere-glow" />
+          <div className="earth-continents-texture" />
+          <div className="earth-orbit-ring">
+            <span className="earth-satellite-dot" style={{ background: themeColor }} />
+          </div>
+          <div className="earth-title-label">
+            <Globe size={13} color={themeColor} />
+            <span>PLANET EARTH // DESTINATION</span>
+          </div>
+        </div>
+
+        {/* Flying Spaceship / Rocket Approaching Earth */}
+        <div className="flying-spaceship-wrapper" style={{ '--thruster-c': themeColor } as React.CSSProperties}>
+          <div className="spaceship-ship-container">
+            <Rocket size={42} className="spaceship-icon" color="#ffffff" />
+            <div className="spaceship-plasma-thruster">
+              <span className="flame-core" style={{ background: themeColor, boxShadow: `0 0 20px ${themeColor}` }} />
+              <span className="flame-spark spark-1" />
+              <span className="flame-spark spark-2" />
+              <span className="flame-spark spark-3" />
+            </div>
+          </div>
+          <div className="spaceship-flight-trail" style={{ background: `linear-gradient(270deg, ${themeColor}66 0%, transparent 100%)` }} />
+        </div>
+
+        {/* 3D Wireframe Spinning Cubes */}
         <div className="floating-3d-cube cube-left">
           <div className="cube-face front" style={{ borderColor: themeColor }} />
           <div className="cube-face back" style={{ borderColor: themeColor }} />
@@ -157,37 +182,22 @@ export const TechResearchFooter: React.FC = () => {
           <div className="cube-face bottom" style={{ borderColor: themeColor }} />
         </div>
 
-        <div className="floating-3d-cube cube-right">
-          <div className="cube-face front" style={{ borderColor: themeColor }} />
-          <div className="cube-face back" style={{ borderColor: themeColor }} />
-          <div className="cube-face right" style={{ borderColor: themeColor }} />
-          <div className="cube-face left" style={{ borderColor: themeColor }} />
-          <div className="cube-face top" style={{ borderColor: themeColor }} />
-          <div className="cube-face bottom" style={{ borderColor: themeColor }} />
-        </div>
-
-        {/* Orbiting Quantum Holographic Ring */}
-        <div className="orbiting-tech-ring ring-1" style={{ borderColor: `${themeColor}22` }}>
-          <div className="ring-satellite-node" style={{ background: themeColor, boxShadow: `0 0 12px ${themeColor}` }} />
-        </div>
-        <div className="orbiting-tech-ring ring-2" style={{ borderColor: `${themeColor}15` }} />
-
-        {/* Floating Interactive Technical Badges & Data Modules */}
+        {/* Floating Technical Badges */}
         {FLOATING_TECH_OBJECTS.map((obj) => {
           const ObjIcon = obj.icon;
 
           return (
             <motion.div
               key={obj.id}
-              className={`space-floating-tech-obj ${obj.size}`}
+              className="space-floating-tech-obj"
               style={{
                 left: obj.x,
                 top: obj.y,
                 '--accent-c': obj.color,
               } as React.CSSProperties}
               animate={{
-                y: [0, -18, 0, 18, 0],
-                rotate: [0, 4, -4, 0],
+                y: [0, -16, 0, 16, 0],
+                rotate: [0, 3, -3, 0],
               }}
               transition={{
                 duration: obj.duration,
@@ -215,9 +225,11 @@ export const TechResearchFooter: React.FC = () => {
             <div className="rd-live-badge">
               <span className="rd-live-pulse-dot" style={{ backgroundColor: themeColor, boxShadow: `0 0 10px ${themeColor}` }} />
               <Radio size={14} color={themeColor} />
-              <span>R&D TECH LAB // RESEARCH & DEVELOPMENT RADAR</span>
+              <span className="highlighted-word-glow">R&D TECH LAB // MISSION: SPACECRAFT RE-ENTRY</span>
             </div>
-            <h3 className="rd-main-heading">TECHNICAL INNOVATION & SYSTEM LAB</h3>
+            <h3 className="rd-main-heading">
+              <span className="neon-highlight-text">TECHNICAL INNOVATION</span> & <span className="neon-gradient-word">SYSTEM RESEARCH LAB</span>
+            </h3>
           </div>
 
           {/* Theme Selector Palette Buttons */}
@@ -389,12 +401,12 @@ export const TechResearchFooter: React.FC = () => {
           </div>
         </div>
 
-        {/* BOTTOM METRICS TELEMETRY STRIP */}
+        {/* BOTTOM METRICS TELEMETRY STRIP WITH HIGHLIGHTED WORDS */}
         <div className="rd-telemetry-metrics-strip">
           <div className="telemetry-item">
             <Activity size={16} color={themeColor} />
             <div>
-              <div className="tel-val">MERN & AI INTEGRATION</div>
+              <div className="tel-val highlight-cyan">MERN & AI INTEGRATION</div>
               <div className="tel-lbl">CORE RESEARCH FOCUS</div>
             </div>
           </div>
@@ -402,15 +414,15 @@ export const TechResearchFooter: React.FC = () => {
           <div className="telemetry-item">
             <Globe size={16} color={themeColor} />
             <div>
-              <div className="tel-val">SRIPERUMBUDUR / KANCHEEPURAM</div>
-              <div className="tel-lbl">LOCATION & BASE</div>
+              <div className="tel-val highlight-green">PLANET EARTH // INDIA</div>
+              <div className="tel-lbl">SRIPERUMBUDUR / KANCHEEPURAM</div>
             </div>
           </div>
 
           <div className="telemetry-item">
             <ShieldCheck size={16} color={themeColor} />
             <div>
-              <div className="tel-val">IEEE STUDENT BRANCH</div>
+              <div className="tel-val highlight-violet">IEEE STUDENT BRANCH</div>
               <div className="tel-lbl">CHAIRMAN LEADERSHIP</div>
             </div>
           </div>
@@ -418,7 +430,7 @@ export const TechResearchFooter: React.FC = () => {
           <div className="telemetry-item">
             <Compass size={16} color={themeColor} />
             <div>
-              <div className="tel-val">AVAILABLE FOR ROLES</div>
+              <div className="tel-val highlight-amber">AVAILABLE FOR ROLES</div>
               <div className="tel-lbl">FULL STACK / SOFTWARE ENG</div>
             </div>
           </div>
@@ -429,21 +441,25 @@ export const TechResearchFooter: React.FC = () => {
           <div className="footer-brand-col">
             <div className="footer-logo-badge">MR</div>
             <div>
-              <div className="footer-name">MOHAN RAJ</div>
-              <div className="footer-role">FULL STACK DEVELOPER & SOFTWARE ENGINEER</div>
+              <div className="footer-name">
+                <span className="neon-highlight-text">MOHAN RAJ</span>
+              </div>
+              <div className="footer-role">
+                <span className="highlight-pill-tag">FULL STACK DEVELOPER & SOFTWARE ENGINEER</span>
+              </div>
             </div>
           </div>
 
           <div className="footer-stack-pills">
-            <span className="stack-item">React 18</span>
+            <span className="stack-item highlight">React 18</span>
             <span className="stack-sep">/</span>
-            <span className="stack-item">TypeScript</span>
+            <span className="stack-item highlight">TypeScript</span>
             <span className="stack-sep">/</span>
-            <span className="stack-item">Tailwind CSS</span>
+            <span className="stack-item highlight">Tailwind CSS</span>
             <span className="stack-sep">/</span>
-            <span className="stack-item">Framer Motion</span>
+            <span className="stack-item highlight">Framer Motion</span>
             <span className="stack-sep">/</span>
-            <span className="stack-item">Vite</span>
+            <span className="stack-item highlight">Vite</span>
           </div>
 
           <div className="footer-social-links">
@@ -504,7 +520,7 @@ export const TechResearchFooter: React.FC = () => {
         </div>
 
         <div className="rd-copyright-line">
-          <span>© 2026 Mohan Raj. All rights reserved. Crafted with precision for high performance.</span>
+          <span>© 2026 Mohan Raj. All rights reserved. <span className="neon-word-glow">Crafted with precision for high performance.</span></span>
         </div>
       </div>
     </footer>

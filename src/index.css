@@ -6260,6 +6260,240 @@ body.hide-header-for-modal .nav-shell {
     gap: 36px;
 }
 
+/* ==================================================== */
+/* SPACESHIP / ROCKET FLYING TOWARD EARTH ANIMATION     */
+/* ==================================================== */
+.space-animation-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 2;
+}
+
+/* Planet Earth Sphere */
+.planet-earth-sphere {
+    position: absolute;
+    right: 5%;
+    bottom: 8%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #1e3a8a 0%, #0f172a 70%, #020617 100%);
+    box-shadow: 0 0 45px var(--glow-color, rgba(0, 229, 255, 0.4)), inset 0 0 35px var(--glow-color, rgba(0, 229, 255, 0.3));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--glow-color, #00e5ff);
+}
+
+.earth-atmosphere-glow {
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--glow-color, rgba(0, 229, 255, 0.15)) 0%, transparent 70%);
+    animation: pulse 3s infinite;
+}
+
+.earth-continents-texture {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-size: 14px 14px;
+    opacity: 0.6;
+    animation: earth-rotate 30s linear infinite;
+}
+
+@keyframes earth-rotate {
+    0% { background-position: 0 0; }
+    100% { background-position: 200px 0; }
+}
+
+.earth-orbit-ring {
+    position: absolute;
+    inset: -25px;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    animation: ring-rotate 20s linear infinite;
+}
+
+.earth-satellite-dot {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px currentColor;
+    transform: translate(-50%, -50%);
+}
+
+.earth-title-label {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font: 700 8.5px 'JetBrains Mono', monospace;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.65);
+    padding: 3px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-shadow: 0 0 8px #00e5ff;
+    letter-spacing: 0.8px;
+}
+
+/* Flying Spaceship / Rocket Approaching Earth */
+.flying-spaceship-wrapper {
+    position: absolute;
+    top: 25%;
+    left: -10%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: spaceship-flight 15s ease-in-out infinite;
+}
+
+@keyframes spaceship-flight {
+    0% {
+        transform: translate(0, 0) rotate(22deg) scale(0.7);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(95vw, 45vh) rotate(22deg) scale(1.15);
+        opacity: 0;
+    }
+}
+
+.spaceship-ship-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    transform: rotate(45deg);
+    filter: drop-shadow(0 0 15px var(--thruster-c, #00e5ff));
+}
+
+.spaceship-icon {
+    filter: drop-shadow(0 0 12px var(--thruster-c, #00e5ff));
+}
+
+.spaceship-plasma-thruster {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.flame-core {
+    width: 24px;
+    height: 8px;
+    border-radius: 50% 0 0 50%;
+    animation: thruster-pulse 0.15s infinite alternate;
+}
+
+@keyframes thruster-pulse {
+    0% { transform: scaleX(1); opacity: 0.8; }
+    100% { transform: scaleX(1.4); opacity: 1; }
+}
+
+.flame-spark {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #f59e0b;
+    box-shadow: 0 0 8px #f59e0b;
+    animation: spark-fly 0.6s linear infinite;
+}
+
+.flame-spark.spark-1 { top: -4px; animation-delay: 0s; }
+.flame-spark.spark-2 { top: 2px; animation-delay: 0.2s; }
+.flame-spark.spark-3 { top: 8px; animation-delay: 0.4s; }
+
+@keyframes spark-fly {
+    0% { transform: translateX(0) scale(1); opacity: 1; }
+    100% { transform: translateX(-40px) scale(0); opacity: 0; }
+}
+
+.spaceship-flight-trail {
+    width: 140px;
+    height: 3px;
+    border-radius: 4px;
+    box-shadow: 0 0 15px var(--thruster-c, #00e5ff);
+}
+
+/* ==================================================== */
+/* NEON HIGHLIGHTED TEXT WORDS STYLES                   */
+/* ==================================================== */
+.neon-highlight-text {
+    background: linear-gradient(90deg, #00e5ff 0%, #a855f7 50%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.4));
+}
+
+.neon-gradient-word {
+    color: #00e5ff;
+    text-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+    font-weight: 800;
+}
+
+.highlighted-word-glow {
+    color: #00e5ff;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+    font-weight: 700;
+}
+
+.neon-word-glow {
+    color: #38bdf8;
+    text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+}
+
+.highlight-cyan {
+    color: #00e5ff !important;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+.highlight-green {
+    color: #10b981 !important;
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.highlight-violet {
+    color: #a855f7 !important;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+.highlight-amber {
+    color: #f59e0b !important;
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+.highlight-pill-tag {
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    padding: 2px 8px;
+    border-radius: 6px;
+    color: #00e5ff;
+}
+
+.stack-item.highlight {
+    color: #00e5ff;
+    text-shadow: 0 0 6px rgba(0, 229, 255, 0.3);
+}
+
 /* Header & Theme Palette Bar */
 .rd-hub-header {
     display: flex;
@@ -6874,17 +7108,6 @@ body.hide-header-for-modal .nav-shell {
     padding-top: 10px;
 }
 
-/* ==================================================== */
-/* ANIMATED FLOATING TECHNICAL OBJECTS IN EMPTY SPACE   */
-/* ==================================================== */
-.empty-space-objects-stage {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 2;
-}
-
 /* 3D Wireframe Spinning Cubes */
 .floating-3d-cube {
     position: absolute;
@@ -6899,15 +7122,6 @@ body.hide-header-for-modal .nav-shell {
     top: 30%;
     width: 60px;
     height: 60px;
-}
-
-.floating-3d-cube.cube-right {
-    right: 4%;
-    top: 38%;
-    width: 70px;
-    height: 70px;
-    animation-duration: 26s;
-    animation-direction: reverse;
 }
 
 @keyframes cube-spin-3d {
@@ -6938,53 +7152,6 @@ body.hide-header-for-modal .nav-shell {
 .cube-face.left   { transform: rotateY(-90deg) translateZ(30px); }
 .cube-face.top    { transform: rotateX(90deg) translateZ(30px); }
 .cube-face.bottom { transform: rotateX(-90deg) translateZ(30px); }
-
-.cube-right .cube-face.front  { transform: translateZ(35px); }
-.cube-right .cube-face.back   { transform: rotateY(180deg) translateZ(35px); }
-.cube-right .cube-face.right  { transform: rotateY(90deg) translateZ(35px); }
-.cube-right .cube-face.left   { transform: rotateY(-90deg) translateZ(35px); }
-.cube-right .cube-face.top    { transform: rotateX(90deg) translateZ(35px); }
-.cube-right .cube-face.bottom { transform: rotateX(-90deg) translateZ(35px); }
-
-/* Orbiting Quantum Tech Ring */
-.orbiting-tech-ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px dashed rgba(0, 229, 255, 0.15);
-    pointer-events: none;
-    animation: ring-rotate 35s linear infinite;
-}
-
-.orbiting-tech-ring.ring-1 {
-    width: 500px;
-    height: 500px;
-    left: -150px;
-    top: 10%;
-}
-
-.orbiting-tech-ring.ring-2 {
-    width: 600px;
-    height: 600px;
-    right: -180px;
-    bottom: 5%;
-    animation-duration: 45s;
-    animation-direction: reverse;
-}
-
-@keyframes ring-rotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.ring-satellite-node {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-}
 
 /* Floating Technical Badges & Data Modules in Space */
 .space-floating-tech-obj {
@@ -7029,6 +7196,12 @@ body.hide-header-for-modal .nav-shell {
         display: none;
     }
     .floating-3d-cube {
+        display: none;
+    }
+    .planet-earth-sphere {
+        display: none;
+    }
+    .flying-spaceship-wrapper {
         display: none;
     }
 }
