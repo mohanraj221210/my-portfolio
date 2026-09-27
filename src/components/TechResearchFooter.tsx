@@ -14,6 +14,14 @@ import {
   Activity,
   Globe,
   Compass,
+  Box,
+  Layers,
+  Atom,
+  Binary,
+  Code2,
+  Sparkles,
+  Database,
+  Network,
 } from 'lucide-react';
 import { soundEngine } from '../utils/soundEffects';
 import resumePdf from '../assets/pdfs/Mohan_Raj_Resume.pdf';
@@ -94,6 +102,16 @@ const TERMINAL_LOGS_POOL = [
   '[R&D_STATUS] 4 Research Projects Active // 0 System Warnings',
 ];
 
+// Animated Floating Technical Research Objects in Empty Space Background
+const FLOATING_TECH_OBJECTS = [
+  { id: 1, label: '<MERN_STACK />', icon: Code2, x: '8%', y: '12%', duration: 18, size: 'sm', color: '#00E5FF' },
+  { id: 2, label: 'AI_MODEL::QUANTUM', icon: Atom, x: '88%', y: '18%', duration: 22, size: 'md', color: '#A855F7' },
+  { id: 3, label: 'QR_SECURITY_NODE', icon: ShieldCheck, x: '5%', y: '58%', duration: 25, size: 'md', color: '#10B981' },
+  { id: 4, label: 'SERVERLESS_EDGE', icon: Network, x: '91%', y: '62%', duration: 20, size: 'sm', color: '#F59E0B' },
+  { id: 5, label: 'IEEE_LEADERSHIP', icon: Zap, x: '15%', y: '85%', duration: 24, size: 'sm', color: '#00E5FF' },
+  { id: 6, label: 'DB_SHARD::LIVE', icon: Database, x: '82%', y: '88%', duration: 19, size: 'sm', color: '#38BDF8' },
+];
+
 export const TechResearchFooter: React.FC = () => {
   const [selectedNodeId, setSelectedNodeId] = useState<string>('fullstack-arch');
   const [themeColor, setThemeColor] = useState<string>('#00E5FF');
@@ -124,6 +142,71 @@ export const TechResearchFooter: React.FC = () => {
     <footer className="tech-rd-footer-section">
       {/* Animated Glowing Top Border Beam */}
       <div className="rd-footer-beam-line" style={{ background: `linear-gradient(90deg, transparent 0%, ${themeColor} 50%, transparent 100%)` }} />
+
+      {/* ========================================================= */}
+      {/* BACKGROUND FLOATING TECHNICAL ANIMATION OBJECTS IN SPACE  */}
+      {/* ========================================================= */}
+      <div className="empty-space-objects-stage">
+        {/* Animated Wireframe 3D Floating Geometry Cubes */}
+        <div className="floating-3d-cube cube-left">
+          <div className="cube-face front" style={{ borderColor: themeColor }} />
+          <div className="cube-face back" style={{ borderColor: themeColor }} />
+          <div className="cube-face right" style={{ borderColor: themeColor }} />
+          <div className="cube-face left" style={{ borderColor: themeColor }} />
+          <div className="cube-face top" style={{ borderColor: themeColor }} />
+          <div className="cube-face bottom" style={{ borderColor: themeColor }} />
+        </div>
+
+        <div className="floating-3d-cube cube-right">
+          <div className="cube-face front" style={{ borderColor: themeColor }} />
+          <div className="cube-face back" style={{ borderColor: themeColor }} />
+          <div className="cube-face right" style={{ borderColor: themeColor }} />
+          <div className="cube-face left" style={{ borderColor: themeColor }} />
+          <div className="cube-face top" style={{ borderColor: themeColor }} />
+          <div className="cube-face bottom" style={{ borderColor: themeColor }} />
+        </div>
+
+        {/* Orbiting Quantum Holographic Ring */}
+        <div className="orbiting-tech-ring ring-1" style={{ borderColor: `${themeColor}22` }}>
+          <div className="ring-satellite-node" style={{ background: themeColor, boxShadow: `0 0 12px ${themeColor}` }} />
+        </div>
+        <div className="orbiting-tech-ring ring-2" style={{ borderColor: `${themeColor}15` }} />
+
+        {/* Floating Interactive Technical Badges & Data Modules */}
+        {FLOATING_TECH_OBJECTS.map((obj) => {
+          const ObjIcon = obj.icon;
+
+          return (
+            <motion.div
+              key={obj.id}
+              className={`space-floating-tech-obj ${obj.size}`}
+              style={{
+                left: obj.x,
+                top: obj.y,
+                '--accent-c': obj.color,
+              } as React.CSSProperties}
+              animate={{
+                y: [0, -18, 0, 18, 0],
+                rotate: [0, 4, -4, 0],
+              }}
+              transition={{
+                duration: obj.duration,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              whileHover={{ scale: 1.15, zIndex: 30 }}
+              onClick={() => soundEngine.playClick()}
+              onMouseEnter={() => soundEngine.playHover()}
+            >
+              <div className="space-obj-inner">
+                <ObjIcon size={14} color={obj.color} />
+                <span>{obj.label}</span>
+                <span className="obj-pulse-light" style={{ background: obj.color }} />
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
 
       <div className="container rd-footer-content-wrapper">
         {/* R&D RESEARCH HUB CONTROL HEADER */}
