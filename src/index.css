@@ -5248,3 +5248,246 @@ body.hide-header-for-modal .nav-shell {
     animation: float 6s ease-in-out infinite;
     filter: drop-shadow(0 0 15px var(--primary-accent));
 }
+
+/* ==================================================== */
+/* PROJECT CASE FILE DETAILED MODAL DESIGN (NEW)        */
+/* ==================================================== */
+.project-case-modal-frame {
+    position: relative;
+    width: 100%;
+    max-width: 920px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 36px 40px;
+    border-radius: 24px;
+    background: #0d0f1b;
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    box-shadow: 0 35px 95px rgba(0, 0, 0, 0.95), 0 0 50px var(--glow, rgba(168, 85, 247, 0.25));
+    color: #e2e8f0;
+}
+
+.case-modal-header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.case-modal-meta-chip {
+    font: 700 11px 'JetBrains Mono', monospace;
+    color: var(--tone, #a855f7);
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.case-modal-main-title {
+    font: 800 28px/1.2 'Space Grotesk', sans-serif;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.5px;
+}
+
+.case-modal-main-subtitle {
+    font: 500 14px 'Inter', sans-serif;
+    color: #94a3b8;
+    margin: 0;
+}
+
+.modal-close-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #94a3b8;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.5);
+    color: #ef4444;
+}
+
+.case-modal-actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.case-action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font: 700 11px 'JetBrains Mono', monospace;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.case-action-link.primary-live {
+    background: rgba(0, 229, 255, 0.12);
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    color: #00e5ff;
+}
+
+.case-action-link.primary-live:hover {
+    background: rgba(0, 229, 255, 0.25);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+.case-action-link.github-repo {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.case-action-link.github-repo:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+}
+
+.case-action-badge.playstore {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    color: #c084fc;
+    font: 700 11px 'JetBrains Mono', monospace;
+}
+
+/* 2-Column Grid Layout matching reference screenshots */
+.case-modal-grid-layout {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 36px;
+}
+
+@media (max-width: 768px) {
+    .case-modal-grid-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+.case-section-block {
+    margin-bottom: 24px;
+}
+
+.case-label-purple {
+    font: 700 11px 'JetBrains Mono', monospace;
+    letter-spacing: 1.8px;
+    color: #a855f7;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+}
+
+.case-label-amber {
+    font: 700 11px 'JetBrains Mono', monospace;
+    letter-spacing: 1.8px;
+    color: #f59e0b;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+}
+
+.case-label-green {
+    font: 700 11px 'JetBrains Mono', monospace;
+    letter-spacing: 1.8px;
+    color: #10b981;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+}
+
+.case-text-content {
+    font: 400 14px/1.65 'Inter', sans-serif;
+    color: #cbd5e1;
+    margin: 0;
+}
+
+/* How I Solved It Box (Green Border Glowing Container) */
+.case-solved-box {
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 12px;
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.1);
+}
+
+.case-solved-text {
+    font: 400 13.5px/1.65 'Inter', sans-serif;
+    color: #e2e8f0;
+    margin: 0;
+}
+
+/* Architecture Flow Nodes Diagram */
+.architecture-flow-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.arch-flow-node {
+    background: rgba(168, 85, 247, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font: 700 11px 'JetBrains Mono', monospace;
+    letter-spacing: 1px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.arch-flow-node.result-node {
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.5);
+    color: #10b981;
+    font-weight: 800;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+.arch-flow-arrow {
+    display: flex;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.35);
+    margin: -2px 0;
+}
+
+/* Tech Badges Grid */
+.case-tech-badges-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.case-tech-badge-pill {
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: #c084fc;
+    font: 600 12px 'JetBrains Mono', monospace;
+    padding: 6px 14px;
+    border-radius: 8px;
+}
+
+.case-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
