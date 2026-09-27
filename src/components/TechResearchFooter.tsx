@@ -15,12 +15,8 @@ import {
   Globe,
   Compass,
   Code2,
-  Sparkles,
   Database,
-  Network,
   Rocket,
-  Flame,
-  Orbit,
 } from 'lucide-react';
 import { soundEngine } from '../utils/soundEffects';
 import resumePdf from '../assets/pdfs/Mohan_Raj_Resume.pdf';
