@@ -9,6 +9,7 @@ import { ProjectsShowcase } from './components/ProjectsShowcase';
 import { RocketExperienceTimeline } from './components/RocketExperienceTimeline';
 import { StoryArcTimeline } from './components/StoryArcTimeline';
 import { ContactSignalTerminal } from './components/ContactSignalTerminal';
+import { EducationShowcase } from './components/EducationShowcase';
 import {
   AboutStartupBackgroundMotif,
   SkillsProductBackgroundMotif,
@@ -23,6 +24,7 @@ import {
   Code2,
   Database,
   Download,
+  GraduationCap,
   ExternalLink,
   Github,
   Linkedin,
@@ -67,7 +69,7 @@ type Project = {
   status: 'LIVE' | 'IN DEVELOPMENT' | 'CONCEPT';
 };
 
-const navItems = ['About', 'Skills', 'Projects', 'Experience', 'Leadership', 'Certifications', 'Contact'];
+const navItems = ['About', 'Education', 'Skills', 'Projects', 'Experience', 'Leadership', 'Certifications', 'Contact'];
 
 const projectsData: Project[] = [
   {
@@ -164,7 +166,7 @@ export function App() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 30);
-      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'leadership', 'certifications', 'contact'];
+      const sections = ['home', 'about', 'education', 'skills', 'projects', 'experience', 'leadership', 'certifications', 'contact'];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -501,6 +503,16 @@ export function App() {
               <AboutStatsGrid />
             </div>
           </div>
+        </section>
+
+        {/* EDUCATION SECTION */}
+        <section id="education" className="section-wrapper container">
+          <div className="section-label-chip">
+            <GraduationCap size={15} /> ACADEMICS // EDUCATIONAL BACKGROUND
+          </div>
+          <h2 className="section-main-title">EDUCATION & ACADEMICS</h2>
+
+          <EducationShowcase />
         </section>
 
         {/* SKILLS SECTION */}
