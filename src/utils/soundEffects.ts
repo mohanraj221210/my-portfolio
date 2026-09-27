@@ -1,24 +1,7 @@
-import inspirationTrack from '../assets/The-inspiretion.mp3/The-Inspiration-mp3(chosic.com).mp3';
-
-// Web Audio API Sound Effects & Real Audio Track Background Engine
+// Web Audio API Sound Effects Engine
 class CyberSoundEngine {
   private audioCtx: AudioContext | null = null;
   private isSfxMuted: boolean = false;
-  private isMusicPlaying: boolean = false;
-  private bgAudio: HTMLAudioElement | null = null;
-
-  constructor() {
-    if (typeof window !== 'undefined') {
-      try {
-        const audioSrc = inspirationTrack || '/The-inspiration.mp3';
-        this.bgAudio = new Audio(audioSrc);
-        this.bgAudio.loop = true;
-        this.bgAudio.volume = 0.45;
-      } catch (e) {
-        console.warn('Background audio initialization error:', e);
-      }
-    }
-  }
 
   private getContext(): AudioContext | null {
     if (typeof window === 'undefined') return null;
@@ -34,7 +17,7 @@ class CyberSoundEngine {
     return this.audioCtx;
   }
 
-  // Toggles ONLY Sound Effects (SFX) mute state
+  // Toggles Sound Effects (SFX) mute state
   public toggleMute(): boolean {
     this.isSfxMuted = !this.isSfxMuted;
     return this.isSfxMuted;
@@ -44,51 +27,13 @@ class CyberSoundEngine {
     return this.isSfxMuted;
   }
 
-  public getIsMusicPlaying(): boolean {
-    return this.isMusicPlaying;
-  }
+  // Background Music Safe No-Op Methods
+  public startBackgroundMusic() {}
+  public stopBackgroundMusic() {}
+  public toggleBackgroundMusic(): boolean { return false; }
+  public getIsMusicPlaying(): boolean { return false; }
+  public setMusicVolume(_volume: number) {}
 
-  // Toggles ONLY Background Music track play/pause state
-  public toggleBackgroundMusic(): boolean {
-    if (this.isMusicPlaying) {
-      this.stopBackgroundMusic();
-    } else {
-      this.startBackgroundMusic();
-    }
-    return this.isMusicPlaying;
-  }
-
-  // Play background music track (The-Inspiration.mp3)
-  public startBackgroundMusic() {
-    this.isMusicPlaying = true;
-    if (!this.bgAudio && typeof window !== 'undefined') {
-      try {
-        const audioSrc = inspirationTrack || '/The-inspiration.mp3';
-        this.bgAudio = new Audio(audioSrc);
-        this.bgAudio.loop = true;
-        this.bgAudio.volume = 0.45;
-      } catch {}
-    }
-
-    if (this.bgAudio) {
-      this.bgAudio.play().catch((err) => {
-        console.log('Autoplay waiting for user interaction:', err);
-      });
-    }
-  }
-
-  public stopBackgroundMusic() {
-    this.isMusicPlaying = false;
-    if (this.bgAudio) {
-      this.bgAudio.pause();
-    }
-  }
-
-  public setMusicVolume(volume: number) {
-    if (this.bgAudio) {
-      this.bgAudio.volume = Math.max(0, Math.min(1, volume));
-    }
-  }
 
 
 

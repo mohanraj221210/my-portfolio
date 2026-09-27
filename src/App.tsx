@@ -47,7 +47,6 @@ import {
   Zap,
   Volume2,
   VolumeX,
-  Music,
 } from 'lucide-react';
 import { soundEngine } from './utils/soundEffects';
 
@@ -203,23 +202,6 @@ export function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleFirstInteraction = () => {
-      soundEngine.startBackgroundMusic();
-      setIsMusicPlaying(true);
-      window.removeEventListener('click', handleFirstInteraction);
-      window.removeEventListener('scroll', handleFirstInteraction);
-    };
-
-    window.addEventListener('click', handleFirstInteraction);
-    window.addEventListener('scroll', handleFirstInteraction);
-
-    return () => {
-      window.removeEventListener('click', handleFirstInteraction);
-      window.removeEventListener('scroll', handleFirstInteraction);
-    };
-  }, []);
-
   const scrollTo = (id: string) => {
     soundEngine.playClick();
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -227,20 +209,11 @@ export function App() {
   };
 
   const [isAudioMuted, setIsAudioMuted] = useState(soundEngine.getMuted());
-  const [isMusicPlaying, setIsMusicPlaying] = useState(soundEngine.getIsMusicPlaying());
 
   const handleAudioToggle = () => {
     const muted = soundEngine.toggleMute();
     setIsAudioMuted(muted);
     if (!muted) {
-      soundEngine.playClick();
-    }
-  };
-
-  const handleMusicToggle = () => {
-    const playing = soundEngine.toggleBackgroundMusic();
-    setIsMusicPlaying(playing);
-    if (playing) {
       soundEngine.playClick();
     }
   };
@@ -259,8 +232,6 @@ export function App() {
       {booting && (
         <CosmicIntroExperience
           onComplete={() => {
-            soundEngine.startBackgroundMusic();
-            setIsMusicPlaying(true);
             setBooting(false);
           }}
         />
@@ -293,31 +264,6 @@ export function App() {
                 {item}
               </button>
             ))}
-
-            {/* Motivational Background Music Toggle Button */}
-            <button
-              className="sound-hud-toggle-btn music-btn"
-              onClick={handleMusicToggle}
-              onMouseEnter={() => soundEngine.playHover()}
-              title={isMusicPlaying ? 'Pause Motivational Background Music' : 'Play Motivational Background Music'}
-              aria-label="Toggle background music"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '6px 12px',
-                borderRadius: '8px',
-                background: isMusicPlaying ? 'rgba(168, 85, 247, 0.15)' : 'rgba(255, 255, 255, 0.04)',
-                border: isMusicPlaying ? '1px solid rgba(168, 85, 247, 0.45)' : '1px solid rgba(255, 255, 255, 0.15)',
-                color: isMusicPlaying ? '#A855F7' : '#94A3B8',
-                font: '600 11px JetBrains Mono',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              <Music size={14} className={isMusicPlaying ? 'animate-pulse' : ''} />
-              <span>{isMusicPlaying ? 'MUSIC ON' : 'MUSIC OFF'}</span>
-            </button>
 
             {/* Audio SFX Mute Toggle Button */}
             <button
@@ -521,10 +467,12 @@ export function App() {
               <p className="section-subtitle-text">Building technology with creativity and purpose.</p>
 
               <p className="about-lead-p">
-                I&apos;m a Full Stack Developer &amp; IEEE Student Leader passionate about crafting high-performance digital systems and intelligent user experiences.
+                I’m Mohan Raj, a Full-Stack Developer from Kancheepuram, India, currently pursuing my B.Tech in Information Technology.
+
+                I started with simple curiosity about how websites and applications work. That curiosity slowly became a habit of building, breaking, fixing, and learning. Every project has taught me something new and helped me grow not just as a developer, but as a problem solver.
               </p>
               <p>
-                From campus-wide digital outpass workflows to alumni networking applications, I build software across the entire stack with product intuition — shipping clean code, scalable APIs, and memorable interfaces.
+                Today, I enjoy turning ideas into useful products and working on things that can make everyday life a little simpler. Beyond coding, I’m actively involved in IEEE and student community activities, where I get to lead, organize, collaborate, and learn from people around me.
               </p>
 
               <div className="about-tags-row">
