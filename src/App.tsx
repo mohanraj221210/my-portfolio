@@ -49,6 +49,7 @@ import {
   VolumeX,
 } from 'lucide-react';
 import { soundEngine } from './utils/soundEffects';
+import resumePdf from './assets/pdfs/Mohan_Raj_Resume.pdf';
 
 type Project = {
   id: string;
@@ -338,8 +339,10 @@ export function App() {
               </button>
               <a
                 className="cyber-button ghost"
-                href="/Mohan_Raj_-_resume.pdf"
-                download
+                href={resumePdf || '/Mohan_Raj_Resume.pdf'}
+                download="Mohan_Raj_Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
                 onMouseEnter={() => soundEngine.playHover()}
                 onClick={() => soundEngine.playClick()}
               >
