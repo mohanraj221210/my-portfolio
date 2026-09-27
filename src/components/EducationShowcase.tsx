@@ -249,20 +249,20 @@ export const EducationShowcase: React.FC = () => {
 
                     <div className="page-title-row">
                       <div className="page-icon-badge">
-                        <IconComp size={24} color={activeItem.accentColor} />
+                        <IconComp size={20} color={activeItem.accentColor} />
                       </div>
                       <div>
                         <h3 className="page-degree-title">{activeItem.degree}</h3>
                         <div className="page-institution">{activeItem.institution}</div>
                         <div className="page-location">
-                          <MapPin size={12} /> {activeItem.location}
+                          <MapPin size={11} /> {activeItem.location}
                         </div>
                       </div>
                     </div>
 
                     <div className="page-meta-pills">
                       <span className="page-pill timeline">
-                        <Calendar size={13} /> {activeItem.timeline}
+                        <Calendar size={12} /> {activeItem.timeline}
                       </span>
                       <span className="page-pill status">
                         <span className="status-pulse-dot" /> {activeItem.statusTag}
@@ -289,14 +289,14 @@ export const EducationShowcase: React.FC = () => {
                   {/* RIGHT PAGE: Highlights & Key Achievements */}
                   <div className="parchment-side right-side">
                     <div className="right-side-heading">
-                      <Star size={15} color={activeItem.accentColor} />
+                      <Star size={14} color={activeItem.accentColor} />
                       <span>ACADEMIC HIGHLIGHTS & ACHIEVEMENTS</span>
                     </div>
 
                     <div className="page-highlights-list">
                       {activeItem.highlights.map((point, pIdx) => (
                         <div key={pIdx} className="page-highlight-item">
-                          <CheckCircle2 size={15} color={activeItem.accentColor} className="bullet-icon" />
+                          <CheckCircle2 size={13} color={activeItem.accentColor} className="bullet-icon" />
                           <span>{point}</span>
                         </div>
                       ))}
@@ -304,7 +304,7 @@ export const EducationShowcase: React.FC = () => {
 
                     {/* Embossed Book Footer Stamp */}
                     <div className="parchment-stamp">
-                      <Award size={14} color={activeItem.accentColor} />
+                      <Award size={13} color={activeItem.accentColor} />
                       <span>VERIFIED ACADEMIC RECORD // MOHAN RAJ</span>
                     </div>
                   </div>
