@@ -10,6 +10,7 @@ import { RocketExperienceTimeline } from './components/RocketExperienceTimeline'
 import { StoryArcTimeline } from './components/StoryArcTimeline';
 import { ContactSignalTerminal } from './components/ContactSignalTerminal';
 import { EducationShowcase } from './components/EducationShowcase';
+import { TechResearchFooter } from './components/TechResearchFooter';
 import {
   AboutStartupBackgroundMotif,
   SkillsProductBackgroundMotif,
@@ -584,21 +585,8 @@ export function App() {
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="site-footer container">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-          <div>
-            <span style={{ color: '#fff', fontWeight: 700 }}>MOHAN RAJ</span> — Full Stack Developer
-          </div>
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-            <span>Built with: React</span>
-            <span>/ TypeScript</span>
-            <span>/ Tailwind CSS</span>
-            <span>/ Framer Motion</span>
-          </div>
-          <div>© 2026 Mohan Raj. All rights reserved.</div>
-        </div>
-      </footer>
+      {/* R&D TECHNICAL RESEARCH ANIMATED FOOTER WITH FLOATING 3D OBJECTS */}
+      <TechResearchFooter />
     </div>
   );
 }
