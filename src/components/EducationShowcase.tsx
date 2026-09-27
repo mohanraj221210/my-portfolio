@@ -172,36 +172,7 @@ export const EducationShowcase: React.FC = () => {
             ))}
           </div>
 
-          {/* Floating Interactive Hologram Orbs Over Open Pages */}
-          <div className="floating-hologram-orbs-row">
-            {EDUCATION_DATA.map((item, idx) => {
-              const isSelected = activeIdx === idx;
-              const OrbIcon = item.icon;
 
-              return (
-                <motion.button
-                  key={item.id}
-                  whileHover={{ scale: 1.1, y: -6 }}
-                  whileTap={{ scale: 0.95 }}
-                  onMouseEnter={() => soundEngine.playHover()}
-                  onClick={() => {
-                    soundEngine.playClick();
-                    setActiveIdx(idx);
-                  }}
-                  className={`magic-hologram-orb ${isSelected ? 'active' : ''}`}
-                  style={{ '--accent': item.accentColor, '--glow': item.glowColor } as React.CSSProperties}
-                >
-                  <div className="orb-inner-content">
-                    <OrbIcon size={18} color={item.accentColor} />
-                    <span className="orb-label-badge">{item.badge}</span>
-                    <span className="orb-score-val">{item.scoreValue}</span>
-                  </div>
-                  <div className="orb-glowing-ring" />
-                  <div className="orb-light-beam-connector" />
-                </motion.button>
-              );
-            })}
-          </div>
 
           {/* Open Book 3D Pages Frame */}
           <div className="book-pages-3d-frame">
