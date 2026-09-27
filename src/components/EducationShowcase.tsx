@@ -172,7 +172,36 @@ export const EducationShowcase: React.FC = () => {
             ))}
           </div>
 
+          {/* Floating Interactive Hologram Orbs Over Open Pages */}
+          <div className="floating-hologram-orbs-row">
+            {EDUCATION_DATA.map((item, idx) => {
+              const isSelected = activeIdx === idx;
+              const OrbIcon = item.icon;
 
+              return (
+                <motion.button
+                  key={item.id}
+                  whileHover={{ scale: 1.1, y: -6 }}
+                  whileTap={{ scale: 0.95 }}
+                  onMouseEnter={() => soundEngine.playHover()}
+                  onClick={() => {
+                    soundEngine.playClick();
+                    setActiveIdx(idx);
+                  }}
+                  className={`magic-hologram-orb ${isSelected ? 'active' : ''}`}
+                  style={{ '--accent': item.accentColor, '--glow': item.glowColor } as React.CSSProperties}
+                >
+                  <div className="orb-inner-content">
+                    <OrbIcon size={18} color={item.accentColor} />
+                    <span className="orb-label-badge">{item.badge}</span>
+                    <span className="orb-score-val">{item.scoreValue}</span>
+                  </div>
+                  <div className="orb-glowing-ring" />
+                  <div className="orb-light-beam-connector" />
+                </motion.button>
+              );
+            })}
+          </div>
 
           {/* Open Book 3D Pages Frame */}
           <div className="book-pages-3d-frame">
@@ -199,10 +228,10 @@ export const EducationShowcase: React.FC = () => {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeItem.id}
-                initial={{ opacity: 0, rotateY: -25, scale: 0.96 }}
-                animate={{ opacity: 1, rotateY: 0, scale: 1 }}
-                exit={{ opacity: 0, rotateY: 25, scale: 0.96 }}
-                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.96 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="open-book-parchment-page"
                 style={{ '--accent': activeItem.accentColor, '--glow': activeItem.glowColor } as React.CSSProperties}
               >
@@ -211,8 +240,11 @@ export const EducationShowcase: React.FC = () => {
                   {/* LEFT PAGE: Title, Institution, Timeline, Score Meter */}
                   <div className="parchment-side left-side">
                     <div className="page-chapter-header">
-                      <span className="chapter-num">{activeItem.chapterNum}</span>
-                      <span className="chapter-cat">{activeItem.category}</span>
+                      <div className="chapter-meta-tag">
+                        <Sparkles size={13} color={activeItem.accentColor} />
+                        <span>{activeItem.chapterNum} // {activeItem.category}</span>
+                      </div>
+                      <span className="chapter-badge-chip">{activeItem.badge}</span>
                     </div>
 
                     <div className="page-title-row">

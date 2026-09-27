@@ -5813,14 +5813,14 @@ body.hide-header-for-modal .nav-shell {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.55;
-    filter: brightness(0.9) contrast(1.1);
+    opacity: 0.92;
+    filter: brightness(1.15) contrast(1.15);
 }
 
 .book-stage-overlay-glow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, rgba(0, 229, 255, 0.08) 0%, #060913 85%);
+    background: radial-gradient(ellipse at center, rgba(0, 229, 255, 0.05) 0%, rgba(6, 9, 19, 0.4) 85%);
 }
 
 /* Floating Sparkle Particles Emitter */
@@ -5867,72 +5867,12 @@ body.hide-header-for-modal .nav-shell {
     }
 }
 
-/* Floating Hologram Orbs Row */
-.floating-hologram-orbs-row {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.magic-hologram-orb {
-    position: relative;
-    background: rgba(8, 20, 36, 0.85);
-    border: 1.5px solid var(--accent, #00e5ff);
-    border-radius: 20px;
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px var(--glow, rgba(0, 229, 255, 0.25));
-}
-
-.magic-hologram-orb.active {
-    background: rgba(12, 32, 58, 0.95);
-    border-width: 2px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 35px var(--glow, rgba(0, 229, 255, 0.5));
-}
-
-.orb-inner-content {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.orb-label-badge {
-    font: 700 10px 'JetBrains Mono', monospace;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-}
-
-.orb-score-val {
-    font: 800 11px 'JetBrains Mono', monospace;
-    color: var(--accent, #00e5ff);
-    padding: 2px 8px;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.06);
-}
-
-.orb-glowing-ring {
-    position: absolute;
-    inset: -4px;
-    border-radius: 24px;
-    border: 1px dashed var(--accent, #00e5ff);
-    opacity: 0.4;
-    animation: spin-slow 25s linear infinite;
-    pointer-events: none;
-}
-
 /* 3D Open Book Pages Frame */
 .book-pages-3d-frame {
     position: relative;
     z-index: 10;
     width: 100%;
-    max-width: 880px;
+    max-width: 900px;
     perspective: 1200px;
     margin: 0 auto;
 }
@@ -5946,7 +5886,7 @@ body.hide-header-for-modal .nav-shell {
     height: 44px;
     border-radius: 50%;
     background: rgba(8, 20, 36, 0.88);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     color: #ffffff;
     display: grid;
     place-items: center;
@@ -5960,19 +5900,19 @@ body.hide-header-for-modal .nav-shell {
 .page-turn-btn.next { right: -22px; }
 
 .page-turn-btn:hover {
-    background: rgba(0, 229, 255, 0.2);
+    background: rgba(0, 229, 255, 0.25);
     border-color: #00e5ff;
     color: #00e5ff;
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
 }
 
 .open-book-parchment-page {
-    background: linear-gradient(135deg, rgba(14, 28, 48, 0.95) 0%, rgba(4, 12, 24, 0.98) 100%);
+    background: linear-gradient(180deg, rgba(4, 14, 30, 0.72) 0%, rgba(2, 8, 18, 0.82) 100%);
     border: 1.5px solid var(--accent, #00e5ff);
     border-radius: 24px;
     padding: 32px 36px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), inset 0 0 35px var(--glow, rgba(0, 229, 255, 0.2));
+    backdrop-filter: blur(6px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), inset 0 0 35px var(--glow, rgba(0, 229, 255, 0.25));
 }
 
 .page-two-sides-grid {
@@ -5989,14 +5929,14 @@ body.hide-header-for-modal .nav-shell {
 }
 
 .parchment-side.left-side {
-    border-right: 1px dashed rgba(255, 255, 255, 0.1);
+    border-right: 1px dashed rgba(255, 255, 255, 0.12);
     padding-right: 24px;
 }
 
 @media (max-width: 768px) {
     .parchment-side.left-side {
         border-right: none;
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
         padding-right: 0;
         padding-bottom: 24px;
     }
@@ -6006,21 +5946,27 @@ body.hide-header-for-modal .nav-shell {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
-.chapter-num {
-    font: 800 11px 'JetBrains Mono', monospace;
+.chapter-meta-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font: 700 11px 'JetBrains Mono', monospace;
     color: var(--accent, #00e5ff);
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 8px var(--glow, rgba(0, 229, 255, 0.4));
 }
 
-.chapter-cat {
-    font: 700 9px 'JetBrains Mono', monospace;
-    padding: 3px 8px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    color: #94a3b8;
+.chapter-badge-chip {
+    font: 700 9.5px 'JetBrains Mono', monospace;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(0, 229, 255, 0.1);
+    border: 1px solid var(--accent, rgba(0, 229, 255, 0.3));
+    color: var(--accent, #00e5ff);
+    letter-spacing: 0.8px;
 }
 
 .page-title-row {
@@ -6035,19 +5981,20 @@ body.hide-header-for-modal .nav-shell {
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--accent, #00e5ff);
-    box-shadow: 0 0 12px var(--glow, rgba(0, 229, 255, 0.2));
+    box-shadow: 0 0 15px var(--glow, rgba(0, 229, 255, 0.3));
     flex-shrink: 0;
 }
 
 .page-degree-title {
-    font: 800 18px/1.25 'Space Grotesk', sans-serif;
+    font: 800 22px/1.2 'Space Grotesk', sans-serif;
     color: #ffffff;
+    text-shadow: 0 0 12px var(--glow, rgba(0, 229, 255, 0.35));
     margin: 0 0 4px 0;
 }
 
 .page-institution {
-    font: 600 13px 'Inter', sans-serif;
-    color: #cbd5e1;
+    font: 600 14px 'Inter', sans-serif;
+    color: #e2e8f0;
     margin-bottom: 4px;
 }
 
