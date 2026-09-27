@@ -6227,3 +6227,52 @@ body.hide-header-for-modal .nav-shell {
     place-items: center;
     font-size: 9.5px;
 }
+
+/* Clean Normal Footer */
+.clean-site-footer {
+    width: 100%;
+    background: rgba(4, 9, 20, 0.85);
+    border-top: 1px solid rgba(0, 229, 255, 0.2);
+    backdrop-filter: blur(12px);
+    padding: 24px 0;
+    margin-top: 60px;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-content-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font: 500 12px 'JetBrains Mono', monospace;
+    color: #94a3b8;
+}
+
+.footer-brand-title {
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.footer-brand-role {
+    color: #00e5ff;
+}
+
+.footer-stack-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    color: #cbd5e1;
+}
+
+.footer-dot {
+    color: rgba(0, 229, 255, 0.4);
+}
+
+.footer-copy {
+    color: #64748b;
+    font-size: 11px;
+}
